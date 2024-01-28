@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/chat_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -60,6 +61,9 @@ class _HomeScreenState extends State<HomeScreen>
           ),
         ],
         bottom: TabBar(
+            onTap: (value) {
+              setState(() {});
+            },
             indicatorColor: Theme.of(context).secondaryHeaderColor,
             controller: _tabController,
             tabs: const [
@@ -73,11 +77,9 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       body: TabBarView(controller: _tabController, children: [
         Container(
-          color: Colors.redAccent,
-        ),
-        Container(
           color: Colors.blueAccent,
         ),
+        const ChatScreen(),
         Container(
           color: Colors.greenAccent,
         ),
@@ -85,6 +87,19 @@ class _HomeScreenState extends State<HomeScreen>
           color: Colors.redAccent,
         ),
       ]),
+      floatingActionButton: _tabController.index != 0
+          ? FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: Theme.of(context).primaryColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: _tabController.index == 1
+                  ? const Icon(Icons.chat)
+                  : _tabController.index == 2
+                      ? const Icon(Icons.camera_alt)
+                      : const Icon(Icons.add_ic_call_rounded),
+            )
+          : Container(),
     );
   }
 }
