@@ -64,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen>
             onTap: (value) {
               setState(() {});
             },
+
             indicatorColor: Theme.of(context).secondaryHeaderColor,
             controller: _tabController,
             tabs: const [
